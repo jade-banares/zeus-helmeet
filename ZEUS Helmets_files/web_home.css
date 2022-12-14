@@ -10,12 +10,6 @@ header #nav_btn {
   display: none;
 }
 
-#home_slider,
-#home_slider .backimg .img {
-  height: 340px;
-  min-height: 510px;
-}
-
 #home_slider {
   opacity: 0;
   position: relative;
