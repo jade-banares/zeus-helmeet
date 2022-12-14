@@ -1,0 +1,302 @@
+$(document).ready(function(){
+
+    $(window).load(function() {
+                    var window_w = $(window).width();
+                    var window_h = $(window).height();
+                    var window_w_first = $(window).width();
+
+                    var myPlayer;
+                    // $(".various").fancybox({
+                	// 	maxWidth	: 800,
+                	// 	maxHeight	: 600,
+                	// 	fitToView	: false,
+                    //     padding:0,
+                	// 	width		: '90%',
+                	// 	height		: '90%',
+                	// 	autoSize	: false,
+                	// 	closeClick	: false,
+                	// 	openEffect	: 'none',
+                	// 	closeEffect	: 'none'
+                	// });
+
+                    var _speed=0;
+                    if(window_w>1024){
+                        _speed=800;
+                    }else{
+                        _speed=500;
+                    }
+                      var bx_backimg=$('.bx_backimg').bxSlider({
+                          mode:'fade',
+                          speed:_speed,
+                        //   pause:_pause,
+                          easing:'easeOutQuart',
+                        //   auto: true,
+                          infiniteLoop: true,
+                          captions:true,
+                          touchEnabled:false,
+                          controls:false,
+                          pager:true,
+                          pagerCustom: '#home-pager',
+                          onSliderLoad:function(currentIndex){
+
+                          },
+                          onSlideBefore:function($slideElement, oldIndex, newIndex){
+                              $("#home_slider .backimg .z").addClass("move");
+                            //   $("#home_slider .backimg .img").removeClass("active");
+
+                          },
+                          onSlideAfter:function($slideElement, oldIndex, newIndex){
+                              $("#home_slider .backimg .z").removeClass("move");
+                            //   $slideElement.find('.img').addClass("active");
+                          }
+                      });
+
+                      var timer01;
+                      var bx_home=$('.bx_home').bxSlider({
+                          mode:'fade',
+                          speed:_speed,
+                          pause:5500,
+                          easing:'easeOutQuart',
+                          auto: true,
+                          infiniteLoop: true,
+                          captions:true,
+                          touchEnabled:false,
+                          controls:false,
+                          pager:true,
+                          pagerCustom: '#home-pager',
+                          onSliderLoad:function(currentIndex){
+                            $("#home_slider").addClass("active");
+                            setTimeout(function(){
+                                $("#home_slider .backimg .z").removeClass("move");
+                                $("#home_slider .bx_helmet li").eq(0).find(".helmet_box").addClass("active");
+                            },700);
+
+                            setTimeout(function(){
+                                $(".new_product").addClass("fadeInUp animated").css({opacity:1});
+                            },1500);
+
+                          },
+                          onSlideBefore:function($slideElement, oldIndex, newIndex){
+                              clearTimeout(timer01);
+                              $(".helmet_box").removeClass("active");
+                              bx_backimg.goToSlide(newIndex);
+                              bx_home.startAuto();
+                          },
+                          onSlideAfter:function($slideElement, oldIndex, newIndex){
+
+                              timer01=setTimeout(function(){
+                                  $slideElement.find(".helmet_box").addClass("active");
+                              },300);
+
+                          }
+                      });
+
+
+
+
+
+                      if( window_w < 1024){
+
+                          var _min=2;
+                          var p_slideW=window_w * 0.5;
+                         if(window_w<700){
+                             _min=1;
+                             p_slideW=window_w ;
+                         }
+
+                        $('.bx_home_product').bxSlider({
+                            //   mode:'fade',
+                              speed:800,
+                            //   pause:_pause,
+                              easing:'easeOutQuart',
+                              minSlides: _min,
+                              maxSlides: _min,
+                              slideWidth: p_slideW,
+                            //   slideMargin: 10,
+                              infiniteLoop: false,
+                              captions:true,
+                              touchEnabled:true,
+                              controls:true,
+                              pager:false,
+                              onSliderLoad:function(currentIndex){
+                                  $(".new_product .mobile_num .all").html( $(".new_product .bx_home_product li").length /_min );
+
+                              },
+                              onSlideBefore:function($slideElement, oldIndex, newIndex){
+                                  $(".new_product .mobile_num .now").html((newIndex+1));
+                                  console.log(newIndex)
+                              },
+                              onSlideAfter:function($slideElement, oldIndex, newIndex){
+
+                              }
+                          });
+                      }
+
+
+
+
+
+
+
+
+
+
+
+                      $(".new_product .bx_home_product li").hover(function() {
+                          $(".new_product .bx_home_product li").removeClass("active");
+                          $(this).addClass("active");
+                      },function(){
+
+                      });
+
+
+                      var bx_video=$('.bx_video').bxSlider({
+                          mode:'fade',
+                          speed:500,
+                        //   pause:_pause,
+                          easing:'easeOutQuart',
+                        //   auto: true,
+                          infiniteLoop: true,
+                          captions:true,
+                          touchEnabled:false,
+                          controls:false,
+                          pager:true,
+                          onSliderLoad:function(currentIndex){
+
+                          },
+                          onSlideBefore:function($slideElement, oldIndex, newIndex){
+
+                          },
+                          onSlideAfter:function($slideElement, oldIndex, newIndex){
+
+                          }
+                      });
+
+
+
+                        $(document).on('click','.worldmap .circle',function(){
+
+                        });
+
+                        if(window_w > 768){
+
+
+                            $(".our_service .service").waypoint(function() {
+                                $(".our_service .service .imgs").addClass("active");
+
+                                setTimeout(function(){
+                                    $(".our_service .service .text .small").addClass("fadeInUp animated").css({opacity:1});
+                                },300);
+                                setTimeout(function(){
+                                    $(".our_service .service .text .title").addClass("fadeInUp animated").css({opacity:1});
+                                },500);
+                                setTimeout(function(){
+                                    $(".our_service .service .text .memo").addClass("fadeInUp animated").css({opacity:1});
+                                },800);
+                                setTimeout(function(){
+                                    $(".our_service .service .new_more").addClass("fadeInUp animated").css({opacity:1});
+                                },1200);
+
+                            }, { offset: window_h/1.3});
+
+                            $(".home_video").waypoint(function() {
+                                $(".home_video").addClass("fadeInUp animated").css({opacity:1});
+                            }, { offset: window_h/1.3});
+
+                            $(".where").waypoint(function() {
+
+                                $(".where .text .small").addClass("fadeInUp animated").css({opacity:1});
+                                setTimeout(function(){
+                                    $(".where .text .title").addClass("fadeInUp animated").css({opacity:1});
+                                },300);
+                                setTimeout(function(){
+                                    $(".where .new_more").addClass("active");
+                                },800);
+
+                            }, { offset: window_h/1.3});
+
+
+                        }else{
+
+
+                            $(".our_service .service .imgs").addClass("active");
+                            $(".our_service .service .text .small").addClass("fadeInUp animated").css({opacity:1});
+                            $(".our_service .service .text .title").addClass("fadeInUp animated").css({opacity:1});
+                            $(".our_service .service .text .memo").addClass("fadeInUp animated").css({opacity:1});
+                            $(".our_service .service .new_more").addClass("fadeInUp animated").css({opacity:1});
+                            $(".home_video").addClass("fadeInUp animated").css({opacity:1});
+                            $(".where .text .small").addClass("fadeInUp animated").css({opacity:1});
+                            $(".where .text .title").addClass("fadeInUp animated").css({opacity:1});
+                            $(".where .new_more").addClass("fadeInUp animated").css({opacity:1});
+
+                        }
+
+
+
+                    $(".scroll_down").click(function(){
+                        $("html,body").stop().animate({ scrollTop: $(".where").offset().top - 100 }, { duration: 1300,  easing: "easeOutQuint" });
+                    });
+
+
+
+               $(window).resize(function() {
+                 var window_w = $(window).width();
+                 var window_h = $(window).height();
+
+
+
+               });
+               $(window).scroll(function() {
+                        var window_w = $(window).width();
+                        var window_h = $(window).height();
+                        offsetTop = $(window).scrollTop();
+
+
+                        if( window_w > 1024){
+
+                            var w_h = offsetTop - $(".where").offset().top + 500;
+                            var whimg= $(".where .imgs");
+                            if(w_h > 0 && w_h < 380){
+                                if(window_w>1300){
+                                    TweenLite.to(whimg, 1, { css: {'background-position': "0px "+ -w_h +"px"} });
+                                }else{
+                                    if( w_h < 237 ) {
+                                        TweenLite.to(whimg, 1, { css: {'background-position': "50% "+  -w_h/1.5 +"px"} });
+                                    }
+
+                                }
+
+                            }
+
+                            var our_service_imgs_H = offsetTop - $(".our_service .service .imgs").offset().top;
+                            var our_service_imgs= $(".our_service .service .imgs");
+                            if( our_service_imgs_H > -100 ){
+                                TweenLite.to(our_service_imgs, 1, { y: our_service_imgs_H / 10 });
+                            }
+
+                            var our_service_zh = offsetTop - $(".our_service .z").offset().top;
+                            var our_service_z= $(".our_service .z");
+                            TweenLite.to(our_service_z, 1, { y: our_service_zh / -10 });
+
+                            var our_service_helmet = offsetTop - $(".our_service .z").offset().top;
+                            var helmet= $(".our_service .helmet");
+                            TweenLite.to(helmet, 1, { y: our_service_helmet / 10 });
+
+                            var home_video_h = offsetTop - $(".home_video").offset().top;
+                            var home_video= $(".home_video");
+                            TweenLite.to(home_video, 1, { y: home_video_h / 10 });
+
+
+
+                        }
+
+
+
+               });
+
+
+
+
+
+    });
+});

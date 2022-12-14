@@ -1,0 +1,174 @@
+#load{
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 999;
+    display: flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+.pace {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 10000;
+    width: 100px;
+    height: 50px;
+    margin-top: 10px;
+    margin-left: -50px;
+}
+.pace .pace-progress {
+    position: absolute;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    -ms-transform: translate3d(0, 0, 0) !important;
+    transform: translate3d(0, 0, 0) !important;
+}
+.pace .pace-progress:after {
+    content: attr(data-progress-text);
+    text-align: center;
+    color: #292929;
+    font-size: 13px;
+    display: block;
+    z-index: 999;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 50px;
+}
+
+#load .logo{
+    position: relative;
+    width: 200px;
+    height: 28px;
+    background-image: url(../images/load.png);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 200px;
+    -webkit-transition: all 0.8s ease .5s;
+    -moz-transition: all 0.8s ease .5s;
+    -o-transition: all 0.8s ease .5s;
+    -ms-transition: all 0.8s ease .5s;
+    transition: all 0.8s ease .5s;
+}
+#load .logo.show{
+    height: 40px;
+}
+#load .logo .black{
+    background-color: #231815;
+        width: 100%;
+        height: 26px;
+        top: 0px;
+        position: relative;
+
+}
+
+#load .logo .black div{
+    z-index: 2;
+}
+#load .logo .black div:nth-child(1){
+    background-color: white;
+    position: absolute;
+    width: 6px;
+    height: 100%;
+    left: 44px;
+}
+#load .logo .black div:nth-child(2){
+    background-color: white;
+    position: absolute;
+    width: 7px;
+    height: 100%;
+    left: 95px;
+}
+#load .logo .black div:nth-child(3){
+    background-color: white;
+    position: absolute;
+    width: 7px;
+    height: 100%;
+    left: 147px;
+}
+
+#load .logo .black span{
+    background-repeat: no-repeat;
+    background-position: 0;
+    background-size: contain;
+    display: block;
+    position: absolute;
+    z-index: 3;
+    opacity: 0;
+}
+#load .logo .black .w1{
+    background-image: url(../images/load01.jpg);
+    width: 45px;
+    height: 27px;
+    left: -50px;
+    top: 0;
+    -webkit-transition: all .8s ease;
+    -moz-transition: all .8s ease;
+    -o-transition: all .8s ease;
+    -ms-transition: all .8s ease;
+    transition: all .8s ease;
+}
+#load .logo .black .w1{
+    left: 0;
+    opacity: 1;
+}
+#load .logo .black .w2{
+    background-image: url(../images/load02.jpg);
+    width: 45px;
+    height: 27px;
+    left: -150px;
+    top: 0;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+#load .logo .black .w2{
+    left: 50px;
+    opacity: 1;
+}
+#load .logo .black .w3{
+    background-image: url(../images/load03.jpg);
+    width: 24px;
+    height: 20px;
+    left: 113px;
+    top: -20px;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+#load .logo .black .w3{
+    top: -1px;
+    opacity: 1;
+}
+#load .logo .black .w4{
+    background-image: url(../images/load04.jpg);
+    right: -50px;
+    width: 46px;
+    height: 27px;
+    top: 0;
+    -webkit-transition: all .8s ease;
+    -moz-transition: all .8s ease;
+    -o-transition: all .8s ease;
+    -ms-transition: all .8s ease;
+    transition: all .8s ease;
+}
+#load .logo .black .w4{
+    right: 0;
+    opacity: 1;
+}
